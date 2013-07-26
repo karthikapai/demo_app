@@ -8,6 +8,24 @@
 
 </div>
 
-<div class="embed">
+
+
+<!-- <div id= "iframe_id" class="embed">
 <object data=http://www.en.wikipedia.org/wiki/Special:Random width="950" height="550"> <embed src=http://www.en.wikipedia.org/wiki/Special:Random width="950" height="550"> </embed> Error: Embedded data could not be displayed. </object>
 </div>
+ -->
+
+ 
+<iframe width="940" height="550" src="http://en.wikipedia.org/wiki/Special:Random"></iframe>
+
+
+<script>
+  // set onload on element
+  document.getElementsByTagName('iframe')[0].contentWindow.document.click = function() {
+    alert('Frame element loaded')
+  }
+
+  
+</script>
+
+ 
