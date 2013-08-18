@@ -13,11 +13,9 @@
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
-          
           <nav>
             <ul class="nav pull-right">
-              <li>Made with Rails</li>
-
+              <li><%= link_to "About Me", about_path %></li>
             </ul>
           </nav>
         </div>
@@ -25,14 +23,6 @@
     </header>
     <div class="container">
       <%= yield %>
-      <footer class="footer">
-  
-  <nav>
-    <ul>
-      <li><%= link_to "About Me", about_path %></li>
-    </ul>
-  </nav>
-</footer>
     </div>
   </body>
 </html>

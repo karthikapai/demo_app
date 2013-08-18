@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'bootstrap-sass', '2.1'
+gem 'wikipedia-client'
+gem 'sinatra'
 
 group :development do
   gem 'sqlite3', '1.3.5'

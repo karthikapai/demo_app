@@ -1,3 +1,32 @@
+
+<% require 'sinatra' %>
+<% require 'net/http' %>
+<% require 'json'     %>
+
+<% require 'open-uri' %>
+
+<% def get_http(url)
+  url = URI.parse(url)
+  req = Net::HTTP::Get.new(url.request_uri)
+  Net::HTTP.start(url.host, url.port) {|http| http.request(req)}
+end 
+%>
+
+<% def get_name
+  res = get_http('http://en.wikipedia.org/w/api.php?action=query&list=random&rnlimit=1&rnnamespace=0&format=json')
+  json = JSON.parse res.body
+  name = json['query']['random'].first['title']
+
+ 
+
+  return name
+end 
+%>
+
+<% @name = get_name %>
+<% @name_url = 'http://en.wikipedia.org/wiki/' + @name.gsub(/ /, '_') %>
+<% @new_name = get_name %>
+
 <div class="center hero-unit">
   <h1>Wikiquest</h1>
 
@@ -8,24 +37,15 @@
 
 </div>
 
+<h2>from <%= @name %> to <%= @new_name %> </h2>
+
+<iframe id="guestFrame" name="guestFrame" width="940" height="550" src= <%= @name_url %> </iframe>
 
 
-<!-- <div id= "iframe_id" class="embed">
-<object data=http://www.en.wikipedia.org/wiki/Special:Random width="950" height="550"> <embed src=http://www.en.wikipedia.org/wiki/Special:Random width="950" height="550"> </embed> Error: Embedded data could not be displayed. </object>
-</div>
- -->
-
- 
-<iframe width="940" height="550" src="http://en.wikipedia.org/wiki/Special:Random"></iframe>
 
 
-<script>
-  // set onload on element
-  document.getElementsByTagName('iframe')[0].contentWindow.document.click = function() {
-    alert('Frame element loaded')
-  }
+
 
   
-</script>
 
  
